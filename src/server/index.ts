@@ -4,4 +4,9 @@ import express from 'express';
 const app = express();
 app.use(cors());
 
-app.listen(5173, () => console.log("éhojeeeeeeeeee"))
+app.get('/summary', (request, response) => {
+  response.send(('Server '))
+})
+
+
+app.listen(3333, () => console.log("Muito dinheiro pra gente mamãe")); 
