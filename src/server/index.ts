@@ -1,11 +1,13 @@
 import cors from 'cors';
 import express from 'express';
+import { Download } from './download.js';
 
 const app = express();
 app.use(cors());
 
-app.get('/summary', (request, response) => {
-  response.send(('Server '))
+app.get('/summary/:id', (request, response) => {
+  Download(request.params.id)
+  response.json({ result: "Download realizado com sucesso"})
 })
 
 
