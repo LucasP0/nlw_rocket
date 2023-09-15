@@ -1,6 +1,6 @@
 import cors from 'cors';
 import express from 'express';
-import { Download } from './download.js';
+import { Download } from './download.ts';
 
 const app = express();
 app.use(cors());
