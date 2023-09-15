@@ -5,7 +5,7 @@
     "lib": ["ES2020","ESNext", "DOM", "DOM.Iterable"],
     "module": "CommonJS",
     "outDir": "./dist",
-    "rootDir": "/src",
+    "rootDir": "./src",
     "removeComments": true,
     "noEmitOnError": true,
     "esModuleInterop": true,
