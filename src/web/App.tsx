@@ -8,7 +8,7 @@ const [short, setShort] = useState("");
 const handleOnSubmit = (event: any) => {
   event.preventDefault();
   if (!value.includes("shorts")) {
-    setShort("Não é um shor");
+    setShort("ISSO NÃO É UM SHORTS");
   }
   const parms = value.split("shorts")
   console.log(parms);
