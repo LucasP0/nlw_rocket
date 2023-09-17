@@ -4,14 +4,14 @@ import { useState } from "react";
 
 export const App = () => {
 const [value, setValue] = useState("BUCETA MOLHADA");
-const [short, setShort] = useState("");
+const [span, setSpan] = useState("");
 const handleOnSubmit = (event: any) => {
   event.preventDefault();
   if (!value.includes("shorts")) {
-    setShort("ISSO NÃO É UM SHORTS");
+    setSpan("ISSO NÃO É UM SHORTS");
   }
-  const parms = value.split("shorts")
-  console.log(parms);
+  const [_, short2] = value.split("/shorts/")
+  console.log(short2);
 }
 
   return (
@@ -40,7 +40,7 @@ const handleOnSubmit = (event: any) => {
         <div className="w-full flex flex-col gap-2 text-left text-white">
           <h2 className="text-lg font-bold ">Resumo</h2>
           <p id="content" className="text-[#7C7C8A]">Escolha um short para resumir</p>
-          <span>{short}</span>
+          <span>{span}</span>
         </div>
       </div>
     </section>
