@@ -3,7 +3,7 @@ import { useState } from "react";
 
 
 export const App = () => {
-const [value, setValue] = useState("BUCETA MOLHADA");
+const [value, setValue] = useState("");
 const [span, setSpan] = useState("");
 const handleOnSubmit = (event: any) => {
   event.preventDefault();
@@ -11,7 +11,8 @@ const handleOnSubmit = (event: any) => {
     setSpan("ISSO NÃO É UM SHORTS");
   }
   const [_, short2] = value.split("/shorts/")
-  console.log(short2);
+  const [videoID] = short2.split("?si")
+  console.log(videoID);
 }
 
   return (
@@ -42,6 +43,7 @@ const handleOnSubmit = (event: any) => {
           <p id="content" className="text-[#7C7C8A]">Escolha um short para resumir</p>
           <span>{span}</span>
         </div>
+        <a href="../web/div.tsx">Aqui</a>
       </div>
     </section>
   )
