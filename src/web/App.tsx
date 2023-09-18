@@ -3,21 +3,21 @@ import { useState } from "react";
 
 
 export const App = () => {
-const [value, setValue] = useState("");
-const [span, setSpan] = useState("");
-const handleOnSubmit = (event: any) => {
-  event.preventDefault();
-  if (!value.includes("shorts")) {
-    setSpan("ISSO NÃO É UM SHORTS");
+  const [value, setValue] = useState("");
+  const [span, setSpan] = useState("");
+  const handleOnSubmit = (event: any) => {
+    event.preventDefault();
+    if (!value.includes("shorts")) {
+      setSpan("ISSO NÃO É UM SHORTS");
+    }
+    const [_, short2] = value.split("/shorts/")
+    const [videoID] = short2.split("?si")
+    console.log(videoID);
   }
-  const [_, short2] = value.split("/shorts/")
-  const [videoID] = short2.split("?si")
-  console.log(videoID);
-}
 
   return (
     <section
-      className="bg-[#121214] w-full h-screen flex flex-col items-center justify-center">
+      className="bg-[#121214] w-full  flex flex-col items-center justify-center h-screen">
       <div
         className="flex flex-col items-center justify-start gap-10">
         <div className="flex flex-col items-center justify-center ">
@@ -43,8 +43,8 @@ const handleOnSubmit = (event: any) => {
           <p id="content" className="text-[#7C7C8A]">Escolha um short para resumir</p>
           <span>{span}</span>
         </div>
-        <a href="../web/div.tsx">Aqui</a>
       </div>
+
     </section>
   )
 }
