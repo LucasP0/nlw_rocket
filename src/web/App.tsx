@@ -1,11 +1,14 @@
 import { Play } from "lucide-react"
 import { useState } from "react";
-import { Server } from "../server"; 
+import { Server } from "../server";
 
 export const App = () => {
   const [value, setValue] = useState("");
   const [span, setSpan] = useState("Escolha um short para resumir");
+  const [color, setColor] = useState(false);
+
   const handleOnSubmit = async (event: any) => {
+    setColor(false);
     event.preventDefault();
     if (!value.includes("shorts")) {
       setSpan("ISSO NÃO É UM SHORTS");
@@ -13,9 +16,15 @@ export const App = () => {
     const [_, short2] = value.split("/shorts/")
     const [videoID] = short2.split("?si")
     setSpan("Obetendo o texto do áudio...")
-    
+
     const transcription = await Server.get("/summary/" + videoID)
-    setSpan(transcription.data.result)
+    setSpan('Realizando o resumo')
+
+    const summary = await Server.post("/summary", {
+      text: transcription.data.result
+    })
+    setSpan(summary.data.result)
+    setColor(true);
   }
 
   return (
@@ -43,7 +52,7 @@ export const App = () => {
 
         <div className="w-[464px] flex flex-col gap-2 text-left text-white ">
           <h2 className="text-lg font-bold ">Resumo</h2>
-          <p id="content" className="text-[#7C7C8A]">{span}</p>
+          <p id="content" className="text-[#7C7C8A]" style={{color: color === true? 'white': '#7C7C8A'}}>{span}</p>
 
         </div>
       </div>
