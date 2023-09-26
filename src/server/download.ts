@@ -3,7 +3,7 @@ import fs from 'fs';
 
 
 
-export const Download = (videoId: any) => new Promise((resolve, reject) => {
+export const Download = (videoId: any) => new Promise<void|string>((resolve, reject) => {
   const videoURL = "https://www.youtube.com/shorts/" + videoId;
   console.log("Realizando o donwload do vídeo", videoId);
 

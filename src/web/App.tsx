@@ -1,10 +1,13 @@
 import { Play } from "lucide-react"
 import { useState } from "react";
-import { Server } from "../server";
+import { Server } from "../server.ts";
+
+
 
 export const App = () => {
   const [value, setValue] = useState("");
   const [span, setSpan] = useState("Escolha um short para resumir");
+  const [tran, setTrans] = useState("");
   const [color, setColor] = useState(false);
 
   const handleOnSubmit = async (event: any) => {
@@ -23,6 +26,7 @@ export const App = () => {
     const summary = await Server.post("/summary", {
       text: transcription.data.result
     })
+    setTrans(transcription.data.result)
     setSpan(summary.data.result)
     setColor(true);
   }
@@ -51,9 +55,13 @@ export const App = () => {
         </form>
 
         <div className="w-[464px] flex flex-col gap-2 text-left text-white ">
-          <h2 className="text-lg font-bold ">Resumo</h2>
-          <p id="content" className="text-[#7C7C8A]" style={{color: color === true? 'white': '#7C7C8A'}}>{span}</p>
+          <h2 className="text-lg font-bold text-[#8257E5]">Resumo</h2>
+          <p id="content" className="text-[#7C7C8A] text-justify" style={{color: color === true? 'white': '#7C7C8A'}}>{span}</p>
+        </div>
 
+        <div className="w-[464px] flex flex-col gap-2 text-left text-white "style={{display: color === true? 'flex': 'none'}}>
+          <h2 className="text-lg font-bold text-[#8257E5] ">Transcrição</h2>
+          <p id="content" className="text-white text-justify">{tran}</p>
         </div>
       </div>
 
