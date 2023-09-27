@@ -28,7 +28,7 @@ export const Convert = () => new Promise((resolve, reject) => {
       fs.unlinkSync(outputPath)
 
     })
-    .on("Error", (error) => {
+    .on("Error", (error: any) => {
       console.log("Erro ao converter o video", error)
       reject(error)
     })
